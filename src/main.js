@@ -12,7 +12,6 @@ const $ = (selector) => {
 const canvas = $("#game-canvas");
 const context = canvas.getContext("2d");
 const app = $("#app");
-app.style.setProperty("--room-bg", `url("${import.meta.env.BASE_URL}assets/rage-room-bg.png")`);
 const wallTargetLayer = $("#wall-target-layer");
 const targetPanel = $(".target-panel");
 const video = $("#camera-video");
