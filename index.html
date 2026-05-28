@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="一个本地运行的手势解压游戏，用摄像头或鼠标砸碎玻璃瓶。"
+    />
+    <title>砸瓶解压</title>
+  </head>
+  <body>
+    <main id="app" class="app-shell">
+      <canvas id="game-canvas" aria-label="砸瓶解压游戏画面"></canvas>
+      <div id="wall-target-layer" class="wall-target-layer" aria-label="墙面目标"></div>
+
+      <section class="camera-panel" aria-label="摄像头预览">
+        <video id="camera-video" playsinline muted></video>
+        <canvas id="hand-overlay"></canvas>
+      </section>
+
+      <details class="target-panel" aria-label="墙面目标设置" open>
+        <summary>墙面目标</summary>
+        <label class="target-field">
+          <span>写下讨厌的事物</span>
+          <textarea id="target-text" rows="2" maxlength="54" placeholder="比如：拖延、压力、坏情绪"></textarea>
+        </label>
+        <div class="target-actions">
+          <button id="pin-note-button" type="button">贴便利贴</button>
+          <button id="photo-button" type="button">上传照片</button>
+          <button id="clear-targets-button" type="button">清空墙面</button>
+          <input id="photo-input" type="file" accept="image/*" hidden />
+        </div>
+      </details>
+
+      <section class="hud hud-top" aria-label="游戏状态">
+        <div class="brand-lockup">
+          <span class="mark"></span>
+          <div>
+            <p class="eyebrow">Bottle Smash</p>
+            <h1>砸瓶解压</h1>
+          </div>
+        </div>
+        <div class="status-strip">
+          <span id="camera-state">未开启摄像头</span>
+          <span id="phase-label">瞄准玻璃瓶</span>
+          <span>砸碎 <strong id="release-count">0</strong></span>
+        </div>
+      </section>
+
+      <section class="hud hud-bottom" aria-label="操作控制">
+        <p id="gesture-label">握拳抓住瓶子，向外快速甩手投掷。</p>
+        <div class="controls">
+          <button id="camera-button" type="button">开启摄像头</button>
+          <button id="reset-button" type="button">换一瓶</button>
+          <button id="smash-button" type="button">投掷</button>
+          <button id="sound-button" type="button" aria-pressed="false">音效开</button>
+        </div>
+      </section>
+
+      <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
